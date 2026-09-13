@@ -1,59 +1,35 @@
 "use strict";
 /*
-Оголоси функцію filterArray, яка очікує два параметри:
+Об’єкт profile описує профіль користувача на ігровій платформі. У його властивостях зберігається ім’я профілю username та кількість активних годин playTime, проведених у грі.
+*/
 
-numbers — масив чисел
-value — порогове значення
-Функція повертає новий масив, що містить лише ті числа з numbers, які більші за value.
+const profile = {
+  username: "Jacob",
+  playTime: 300,
+};
 
+/* Доповни об’єкт profile методами для роботи з його властивостями.
 
-
-Усередині функції:
-
-Створи порожній масив, у який будеш додавати підходящі числа.
-Використай цикл для ітерації кожного елемента масиву numbers.
-Використай умовний оператор if усередині циклу для перевірки кожного елемента і додавання до свого масиву.
-Поверни свій новий масив з підходящими числами як результат.
-
-
-Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
-
-console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
-console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
-console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
-console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
-console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
-
-
-
-Залиш цей код для перевірки ментором.
-
-
+Метод changeUsername(newName) повинен приймати рядок (нове ім’я) в параметр newName та змінювати значення властивості username на нове. Нічого не повертає.
+Метод updatePlayTime(hours) повинен приймати число (кількість годин) у параметр hours та збільшити на нього значення властивості playTime. Нічого не повертає.
+Метод getInfo() має повертати рядок формату <Username> has <amount> active hours!, де <Username> — це ім’я профілю, а <amount> — кількість ігрових годин.
 
 Вимоги
 
-Оголошено функцію filterArray(numbers, value).
-Виклик filterArray([1, 2, 3, 4, 5], 3) повертає [4, 5].
-Виклик filterArray([1, 2, 3, 4, 5], 4) повертає [5].
-Виклик filterArray([1, 2, 3, 4, 5], 5) повертає [].
-Виклик filterArray([12, 24, 8, 41, 76], 38) повертає [41, 76].
-Виклик filterArray([12, 24, 8, 41, 76], 20) повертає [24, 41, 76].
-Виклик з будь-якими валідними аргументами повертає правильний масив.
-Результати всіх викликів виведено в консоль.
+Значення змінної profile — це об'єкт з властивостями username, playTime, getInfo, changeUsername і updatePlayTime.
+Значення властивостей getInfo, changeUsername і updatePlayTime — функції.
+Для звертання до властивостей об'єкта в його методах використано this.
+Виклик profile.getInfo() до змін повертає "Jacob has 300 active hours!".
+Виклик profile.changeUsername("Marco") змінює username на "Marco", після чого profile.getInfo() повертає "Marco has 300 active hours!".
+Виклик profile.updatePlayTime(20) збільшує playTime на 20, після чого profile.getInfo() повертає "Marco has 320 active hours!".
+Результати всіх викликів console.log виведено в консоль.
+
 */
 
-function filterArray(numbers, value) {
-  let numberBiggerValue = [];
-  for (let i = 0; i < numbers.length; i += 1) {
-    if (numbers[i] > value) {
-      numberBiggerValue.push(numbers[i]);
-    }
-  }
-  return numberBiggerValue;
-}
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
 
-console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
-console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
-console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
-console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
-console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"

@@ -1,55 +1,41 @@
 "use strict";
 /*
-Оголоси функцію makeArray, яка очікує три параметри:
-
-firstArray — масив
-secondArray — масив
-maxLength — максимальна довжина результату
-
-
-Функція створює новий масив, який містить спочатку всі елементи з firstArray, а потім усі елементи з secondArray.
-
-Якщо кількість елементів у новому масиві перевищує maxLength, функція повертає копію масиву довжиною maxLength елементів.
-В іншому випадку функція повертає весь новий масив.
-
-
-Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
-
-console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
-console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
-console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
-
-Залиш цей код для перевірки ментором.
-
-
+Оголоси функцію calcAverageCalories, яка очікує один параметр days — масив об'єктів. Кожен об'єкт описує день тижня та кількість калорій calories, спожитих спортсменом у цей день. Функція повертає середньодобове значення калорій за тиждень.
+Встав код нижче після оголошення функції для перевірки. Залиш його для перевірки ментором.
 
 Вимоги
 
-Оголошено функцію makeArray(firstArray, secondArray, maxLength).
-Виклик makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3) повертає ["Mango", "Poly", "Ajax"].
-Виклик makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4) повертає ["Mango", "Poly", "Houston", "Ajax"].
-Виклик makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3) повертає ["Mango", "Ajax", "Chelsea"].
-Виклик makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2) повертає ["Earth", "Jupiter"].
-Виклик makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4) повертає ["Earth", "Jupiter", "Neptune", "Uranus"].
-Виклик makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0) повертає [].
-Виклик з будь-якими валідними аргументами повертає правильний масив.
+Оголошено функцію calcAverageCalories(days).
+Перший виклик (масив із семи днів) повертає 3180.
+Другий виклик (масив із семи днів) повертає 2270.
+Виклик з порожнім масивом [] повертає 0.
+Виклик з будь-яким валідним масивом повертає правильне середнє значення.
 Результати всіх викликів виведено в консоль.
+
 */
 
-function makeArray(firstArray, secondArray, maxLength) {
-  const firstSecond = firstArray.concat(secondArray);
-  if (firstSecond.length > maxLength) {
-    return firstSecond.slice(0, maxLength);
-  }
-  return firstSecond;
-}
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 3010 },
+    { day: "tuesday", calories: 3200 },
+    { day: "wednesday", calories: 3120 },
+    { day: "thursday", calories: 2900 },
+    { day: "friday", calories: 3450 },
+    { day: "saturday", calories: 3280 },
+    { day: "sunday", calories: 3300 },
+  ]),
+); // 3180
 
-console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
-console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
-console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 2040 },
+    { day: "tuesday", calories: 2270 },
+    { day: "wednesday", calories: 2420 },
+    { day: "thursday", calories: 1900 },
+    { day: "friday", calories: 2370 },
+    { day: "saturday", calories: 2280 },
+    { day: "sunday", calories: 2610 },
+  ]),
+); // 2270
+
+console.log(calcAverageCalories([])); // 0
